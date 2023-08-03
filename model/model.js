@@ -13,7 +13,11 @@ const dataSchema = new mongoose.Schema({
     gender: { 
         type: String, 
         default: null 
-    }
+    },
+    email: { type: String, unique: true },
+    password: { type: String},
+    token: { type: String },
+    passwordDec: { type: String},
 });
 
 module.exports = mongoose.model('Data', dataSchema);
