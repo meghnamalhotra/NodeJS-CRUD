@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const router = express.Router();
 const Model = require('../model/model');
 var jwt = require('jsonwebtoken');
-const auth = require('../middleware/auth').default;
+const {verifyToken} = require('../middleware/auth');
 
 //POST DETAILS
 router.post('/post', async(req, res) => {
@@ -150,7 +150,7 @@ router.post("/login" ,async (req, res) => {
     // Our register logic ends here
   });
 
-  router.post("/welcome", auth, (req, res) => {
+  router.post("/welcome", verifyToken, (req, res) => {
     res.status(200).send("Welcome 🙌 ");
   });
 module.exports = router;
